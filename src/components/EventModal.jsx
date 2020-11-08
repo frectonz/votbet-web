@@ -67,7 +67,7 @@ export default function EventModal({ open, handleClose }) {
           <Box marginY={2}>
             <TextField
               fullWidth
-              type="date-time"
+              type="date"
               name="startDate"
               InputLabelProps={{
                 shrink: true,
