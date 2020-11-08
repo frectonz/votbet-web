@@ -59,7 +59,7 @@ export default function Canidate({ canidate }) {
                   onClick={toggleVote}
                   disabled={isLoading}
                 >
-                  Vote
+                  Toggle Vote
                 </Button>
               </Grid>
             )}
