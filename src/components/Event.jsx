@@ -97,11 +97,6 @@ export default function Event({
               Created at {dayjs(createdAt).format("MMM DD, YYYY")}
             </Typography>
           </Box>
-          <Box marginY={2}>
-            <Typography align="center">
-              Event Type {getEventType(startDate, endDate)}
-            </Typography>
-          </Box>
           <Grid container>
             <Grid item xs={6}>
               <Typography align="center">
