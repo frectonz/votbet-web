@@ -1,0 +1,9 @@
+{
+  "name": "votbet",
+  "short_name": "votbet",
+  "description": "A simple open source voting web app.",
+  "lang": "en",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#3f51b5"
+}
