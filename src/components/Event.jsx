@@ -10,7 +10,6 @@ import dayjs from "dayjs";
 import useAuth from "../hooks/useAuth.js";
 import { useWatchEvent } from "../hooks/events.hooks";
 import { useMe } from "../hooks/auth/useMe.js";
-import { getEventType } from "../utils/getEventType.js";
 
 const isWatching = (userId, watches = []) => {
   for (const watch of watches) {
