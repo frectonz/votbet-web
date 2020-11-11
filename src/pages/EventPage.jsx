@@ -68,6 +68,8 @@ function EventControls({ event }) {
             <Button onClick={() => setDeleteEventDialogOpen(true)}>
               Delete Event
             </Button>
+          </ButtonGroup>
+          <ButtonGroup variant="outlined" color="primary">
             <Button onClick={() => setCreateCanidateDialogOpen(true)}>
               Add Canidate
             </Button>
