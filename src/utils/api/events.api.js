@@ -142,3 +142,23 @@ export const searchEvents = async (token, limit = 10, searchString) => {
   const json = await res.json();
   return json;
 };
+
+export const uploadImage = async (token, id, base64Picture) => {
+  let res;
+  try {
+    res = await fetch(`${API_URL}/events/${id}/picture`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        image: base64Picture,
+      }),
+    });
+  } catch (error) {
+    return error;
+  }
+  const json = await res.json();
+  return json;
+};

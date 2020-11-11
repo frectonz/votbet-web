@@ -6,6 +6,7 @@ import {
   Typography,
   CardActionArea,
   Grid,
+  CardMedia,
 } from "@material-ui/core";
 import { Visibility, HowToVote } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
@@ -20,6 +21,7 @@ export default function EventCard({
   totalVotes,
   startDate,
   endDate,
+  picture,
 }) {
   const history = useHistory();
 
@@ -31,8 +33,15 @@ export default function EventCard({
     <Box marginY={2}>
       <Card>
         <CardActionArea onClick={handleClick}>
-          <Box padding={2}>
-            <CardContent>
+          <CardMedia
+            image={String(picture)}
+            title={name}
+            style={{
+              height: "200px",
+            }}
+          />
+          <CardContent>
+            <Box padding={2}>
               <Box marginY={2}>
                 <Typography variant="h5">{name}</Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
@@ -84,8 +93,8 @@ export default function EventCard({
                   </Typography>
                 </Grid>
               </Grid>
-            </CardContent>
-          </Box>
+            </Box>
+          </CardContent>
         </CardActionArea>
       </Card>
     </Box>

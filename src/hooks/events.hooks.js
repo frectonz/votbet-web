@@ -6,3 +6,4 @@ export * from "./events/useDeleteEvent.js";
 export * from "./events/useWatchEvent.js";
 export * from "./events/useEventsBeingWatched.js";
 export * from "./events/useSearchEvents.js";
+export * from "./events/useUploadImage.js";

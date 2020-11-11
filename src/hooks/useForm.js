@@ -11,6 +11,10 @@ const useForm = (initialState = {}) => {
       val = parseInt(value, 10);
     }
 
+    if (type === "file") {
+      [val] = e.target.files;
+    }
+
     setInputs({ ...inputs, [name]: val });
   }
 

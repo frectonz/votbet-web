@@ -13,18 +13,22 @@ import {
   DialogActions,
   TextField,
   Typography,
+  IconButton,
 } from "@material-ui/core";
+import { Photo } from "@material-ui/icons";
 
 import { useHistory, useParams } from "react-router-dom";
 import {
   useEventById,
   useUpdateEvent,
   useDeleteEvent,
+  useUploadImage,
 } from "../hooks/events.hooks.js";
 import { useMe } from "../hooks/auth.hooks.js";
 import { useCreateCanidate } from "../hooks/canidates.hooks.js";
 import useAuth from "../hooks/useAuth.js";
 import useForm from "../hooks/useForm.js";
+import toBase64 from "../utils/toBase64.js";
 
 export default function EventPage() {
   const { eventId } = useParams();
@@ -51,6 +55,7 @@ function EventControls({ event }) {
   const [createCanidateDialogOpen, setCreateCanidateDialogOpen] = useState(
     false
   );
+  const [uploadImageDialogOpen, setUploadImageDialogOpen] = useState(false);
 
   return (
     <>
@@ -65,6 +70,9 @@ function EventControls({ event }) {
             </Button>
             <Button onClick={() => setCreateCanidateDialogOpen(true)}>
               Add Canidate
+            </Button>
+            <Button onClick={() => setUploadImageDialogOpen(true)}>
+              Upload Image
             </Button>
           </ButtonGroup>
         </Box>
@@ -84,6 +92,11 @@ function EventControls({ event }) {
       <CreateCanidateDialog
         open={createCanidateDialogOpen}
         handleClose={() => setCreateCanidateDialogOpen(false)}
+        eventId={event?._id}
+      />
+      <UploadImageDialog
+        open={uploadImageDialogOpen}
+        handleClose={() => setUploadImageDialogOpen(false)}
         eventId={event?._id}
       />
     </>
@@ -235,6 +248,70 @@ function CreateCanidateDialog({ open, handleClose, eventId }) {
         </Button>
         <Button color="primary" onClick={handleCreate} disabled={isLoading}>
           Submit
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+}
+
+function UploadImageDialog({ open, handleClose, eventId }) {
+  const { inputs, handleChange, clearForm } = useForm({
+    file: "",
+  });
+  const token = useAuth();
+  const { mutate, isLoading } = useUploadImage(token, eventId);
+
+  const handleUpload = async () => {
+    const base64Image = await toBase64(inputs["file"]);
+    await mutate(base64Image);
+    handleClose();
+  };
+
+  return (
+    <Dialog open={open}>
+      <DialogTitle>Upload Event Image</DialogTitle>
+      <DialogContent>
+        <Box marginY={2}>
+          <Grid container justify="center" alignItems="center">
+            <input
+              accept="image/*"
+              style={{ display: "none" }}
+              multiple={false}
+              type="file"
+              name="file"
+              onChange={handleChange}
+              id="raised-button-file"
+            />
+            <label htmlFor="raised-button-file">
+              <IconButton variant="contained" component="span" color="primary">
+                <Photo />
+              </IconButton>
+            </label>
+            {inputs["file"] && (
+              <Typography variant="body2" color="textSecondary">
+                {inputs["file"]?.name}
+              </Typography>
+            )}
+          </Grid>
+          {isLoading && (
+            <Grid container justify="center">
+              <Loading />
+            </Grid>
+          )}
+        </Box>
+      </DialogContent>
+      <DialogActions>
+        <Button
+          onClick={() => {
+            clearForm();
+            handleClose();
+          }}
+          color="primary"
+        >
+          Cancel
+        </Button>
+        <Button color="primary" onClick={handleUpload} disabled={isLoading}>
+          Upload
         </Button>
       </DialogActions>
     </Dialog>

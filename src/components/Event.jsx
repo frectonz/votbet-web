@@ -28,10 +28,10 @@ export default function Event({
   createdAt,
   startDate,
   endDate,
-  creator,
   comments,
   canidates,
   watches,
+  picture,
 }) {
   const token = useAuth();
   const { data: user } = useMe();
@@ -43,8 +43,14 @@ export default function Event({
 
   return (
     <Box marginY={2}>
-      <Paper variant="outlined">
+      <Paper variant="elevation">
         <Box padding={2}>
+          <Box marginBottom={2}>
+            <Grid container justify="center">
+              <img src={picture} alt={name} style={{ borderRadius: "10px" }} />
+            </Grid>
+          </Box>
+
           <Box marginY={2}>
             <Typography align="center" variant="h3">
               {name}
