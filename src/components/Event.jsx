@@ -1,6 +1,13 @@
 import React from "react";
 
-import { Typography, Paper, Box, Grid, Button } from "@material-ui/core";
+import {
+  Typography,
+  Paper,
+  Box,
+  Grid,
+  Button,
+  Container,
+} from "@material-ui/core";
 import { Visibility, HowToVote } from "@material-ui/icons";
 import CommentCard from "./CommentCard.jsx";
 import CanidateCard from "./CanidateCard.jsx";
@@ -47,7 +54,13 @@ export default function Event({
         <Box padding={2}>
           <Box marginBottom={2}>
             <Grid container justify="center">
-              <img src={picture} alt={name} style={{ borderRadius: "10px" }} />
+              <Container maxWidth="sm">
+                <img
+                  src={picture}
+                  alt={name}
+                  style={{ width: "100%", borderRadius: "10px" }}
+                />
+              </Container>
             </Grid>
           </Box>
 
