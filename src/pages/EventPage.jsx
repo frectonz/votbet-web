@@ -71,7 +71,7 @@ function EventControls({ event }) {
           </ButtonGroup>
           <ButtonGroup variant="outlined" color="primary">
             <Button onClick={() => setCreateCanidateDialogOpen(true)}>
-              Add Canidate
+              Add Candidate
             </Button>
             <Button onClick={() => setUploadImageDialogOpen(true)}>
               Upload Image
@@ -176,10 +176,10 @@ function DeleteEventDialog({ open, handleClose, eventId }) {
 
   return (
     <Dialog open={open}>
-      <DialogTitle>Update event</DialogTitle>
+      <DialogTitle>Delete event</DialogTitle>
       <DialogContent>
         <Typography variant="body1">
-          Are you sure you want to delete event.
+          Are you sure you want to delete event?
         </Typography>
       </DialogContent>
       <DialogActions>
@@ -214,13 +214,13 @@ function CreateCanidateDialog({ open, handleClose, eventId }) {
 
   return (
     <Dialog open={open}>
-      <DialogTitle>Create canidate</DialogTitle>
+      <DialogTitle>Create candidate</DialogTitle>
       <DialogContent>
         <Box marginY={2}>
           <TextField
             autoFocus
             name="name"
-            label="Canidate name"
+            label="Candidate name"
             type="text"
             value={inputs["name"]}
             onChange={handleChange}
@@ -230,7 +230,7 @@ function CreateCanidateDialog({ open, handleClose, eventId }) {
         <Box marginY={2}>
           <TextField
             name="description"
-            label="Canidate description"
+            label="Candidate description"
             type="text"
             value={inputs["description"]}
             onChange={handleChange}

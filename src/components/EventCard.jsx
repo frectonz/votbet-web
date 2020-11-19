@@ -70,28 +70,6 @@ export default function EventCard({
                   <HowToVote color="primary" />
                   {totalVotes}
                 </Grid>
-                <Grid
-                  item
-                  container
-                  alignItems="center"
-                  justify="space-evenly"
-                  xs={3}
-                >
-                  <Typography variant="caption">
-                    Start {dayjs(startDate).format("MMM DD, YYYY")}
-                  </Typography>
-                </Grid>
-                <Grid
-                  item
-                  container
-                  alignItems="center"
-                  justify="space-evenly"
-                  xs={3}
-                >
-                  <Typography variant="caption">
-                    End {dayjs(endDate).format("MMM DD, YYYY")}
-                  </Typography>
-                </Grid>
               </Grid>
             </Box>
           </CardContent>

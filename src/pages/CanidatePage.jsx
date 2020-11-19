@@ -61,10 +61,10 @@ function CanidateControls({ canidate }) {
         <Box marginY={2}>
           <ButtonGroup variant="outlined" color="primary">
             <Button onClick={() => setUpdateCanidateDialogOpen(true)}>
-              Update Canidate
+              Update Candidate
             </Button>
             <Button onClick={() => setDeleteCanidateDialogOpen(true)}>
-              Delete Caniadte
+              Delete Candidate
             </Button>
           </ButtonGroup>
         </Box>
@@ -76,7 +76,7 @@ function CanidateControls({ canidate }) {
       />
       <DeleteCanidateDialog
         open={deleteCanidateDialogOpen}
-        handleChange={() => setDeleteCanidateDialogOpen(false)}
+        handleClose={() => setDeleteCanidateDialogOpen(false)}
         canidate={canidate}
       />
     </>
@@ -98,13 +98,13 @@ function UpdateCanidateDialog({ open, handleClose, canidate }) {
 
   return (
     <Dialog open={open}>
-      <DialogTitle>Update canidate</DialogTitle>
+      <DialogTitle>Update candidate</DialogTitle>
       <DialogContent>
         <Box marginY={2}>
           <TextField
             autoFocus
             name="name"
-            label="Canidate name"
+            label="Candidate name"
             type="text"
             value={inputs["name"]}
             onChange={handleChange}
@@ -114,7 +114,7 @@ function UpdateCanidateDialog({ open, handleClose, canidate }) {
         <Box marginY={2}>
           <TextField
             name="description"
-            label="Canidate Description"
+            label="Candidate Description"
             type="text"
             value={inputs["description"]}
             onChange={handleChange}
@@ -156,10 +156,10 @@ function DeleteCanidateDialog({ open, handleClose, canidate }) {
 
   return (
     <Dialog open={open}>
-      <DialogTitle>Delete Canidate</DialogTitle>
+      <DialogTitle>Delete Candidate</DialogTitle>
       <DialogContent>
         <Typography variant="body1">
-          Are you sure you want to delete canidate.
+          Are you sure you want to delete candidate?
         </Typography>
       </DialogContent>
       <DialogActions>

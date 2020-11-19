@@ -129,7 +129,7 @@ export default function Event({
           </Grid>
           {canidates && canidates.length > 0 && (
             <Box marginY={2}>
-              <Typography variant="h5">Canidates</Typography>
+              <Typography variant="h5">Candidates</Typography>
             </Box>
           )}
           {canidates &&
